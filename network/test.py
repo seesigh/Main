@@ -17,8 +17,12 @@ ds = dataGen.DataSetGenerator(data_dir)
 label_names = ds.data_labels
 data_paths = ds.data_info
 
-data = ds.get_mini_batches(batch_size=10, image_size=(96, 96), allchannel=False)
-print(list(data))
+data = ds.get_mini_batches(batch_size=50, image_size=(96, 96), allchannel=False)
+f, l = list(data)[0]
+f = np.asarray(f)
+l =  np.asarray(l)
+print(f.shape)
+
 #print(data.shape)
 
 
