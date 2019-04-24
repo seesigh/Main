@@ -40,8 +40,6 @@ def transform_to_dense(data):
 	data = train,test
 	return data
 
-def img_data:
-	pass
 
 if __name__ == '__main__':
 	print('\ninput_data:')

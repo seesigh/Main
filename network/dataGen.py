@@ -6,6 +6,7 @@ from random import shuffle
 from shutil import copyfile
 import pickle
 
+
 # розділ зображень у різні директорії відповідно до назви(cat, dog...)
 # назви котрих представлені як " imgClass.imgNum.jpg "
 # директорії будуть збережені в data_dir
@@ -23,6 +24,7 @@ def separateData(data_dir):
 					os.makedirs(join(data_dir, tokens[0]))
 				copyfile(image_path, join(join(data_dir, tokens[0]), file_name))
 				os.remove(image_path)
+
 
 # для обробки зображень 
 # перетворення їх в робочий датасет
@@ -116,6 +118,12 @@ class DataSetGenerator:
                del labels
                images=[]
                labels=[]
+
+
+    def get_data_set(self, data_set_size=50, image_size=(200, 200), allchannel=True):
+      data_set = list(self.get_mini_batches(batch_size=data_set_size, image_size=image_size, allchannel=allchannel))[0]
+      return data_set
+
 
     # збереження назв директорій-класів зображень
     def save_labels(self, path):

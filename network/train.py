@@ -1,24 +1,24 @@
 from input_data import load_data, transform_to_conv
 import tensorflow as tf
+import dataGen
 
 
 #<======================_LOAD_INPUT_DATA_======================>
-data = load_data()
-data = transform_to_conv(data)
-train, test = data
-f1, l1 = train
-f2, l2 = test
+data_dir = 'E:\\programming\\projects\\see_sign\\Main\\network\\dataset\\data'
+ds = dataGen.DataSetGenerator(data_dir)
+data = ds.get_data_set(data_set_size=50, image_size=(96, 96), allchannel=False)
+f1,l1 = data
 
 
 #<======================_SET_CALLBACKS_======================>
 # tensorboard --logdir ./log_dir
 tbCallBack = tf.keras.callbacks.TensorBoard(log_dir='./log_dir/model_project2', write_graph=True)
-stopCallBack = tf.keras.callbacks.EarlyStopping(patience=2, monitor='val_loss')
-callbacks = [tbCallBack, stopCallBack]
+#stopCallBack = tf.keras.callbacks.EarlyStopping(patience=2, monitor='val_loss')
+callbacks = [tbCallBack]
 
 
 #<======================_LOAD_CLEAR_MODEL_======================>
-with open('./saved_model/model_project1.json', 'rt', encoding='utf-8') as fileobj:
+with open('./saved_model/model_project2.json', 'rt', encoding='utf-8') as fileobj:
 	json_model = fileobj.read()
 model = tf.keras.models.model_from_json(json_model)
 model.compile(
@@ -26,21 +26,21 @@ model.compile(
 	loss='categorical_crossentropy', 			#tf.keras.losses
 	metrics=['accuracy'])			 			#tf.keras.metrics
 
+
 #<======================_TRAIN_MODEL_======================>
 model.fit(
 	f1,
 	l1,
-	batch_size=100,
-	epochs=1,
-	validation_data=test,
+	batch_size=50,
+	epochs=10,
 	verbose=1,
-	callbacks=callbacks,
+	callbacks=callbacks
 	)
 
 
 #<======================_SAVE_WEIGHTS_MODEL_======================>
-model.save('full_model/model_project2_1ep.h5')
-model.save_weights('weight/model_project2_1ep')
+model.save('full_model/model_project2_10ep.h5')
+model.save_weights('weight/model_project2_10ep')
 
 
 
