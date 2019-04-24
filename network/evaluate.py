@@ -13,7 +13,8 @@ f1, l1 = data
 
 
 #<======================_LOAD_FULL_MODEL_======================>
-model = tf.keras.models.load_model('./full_model/model_project2_100ep.h5')
+model = tf.keras.models.load_model('./full_model/model_project2_10ep.h5')
+#model = tf.keras.models.load_model('./full_model/model_project3_inits_10ep.h5')
 
 '''
 #<======================_LOAD_CLEAR_MODEL_======================>
