@@ -8,12 +8,12 @@ data_dir = 'E:\\programming\\projects\\see_sign\\Main\\network\\dataset\\data'
 test_dir = 'E:\\programming\\projects\\see_sign\\Main\\network\\dataset\\test'
 
 ds = dataGen.DataSetGenerator(test_dir)
-data = ds.get_data_set(data_set_size=25, image_size=(96, 96), allchannel=False)
+data = ds.get_data_set(data_set_size=25, image_size=(96, 96), allchannel=True)
 f1, l1 = data
 
 
 #<======================_LOAD_FULL_MODEL_======================>
-model = tf.keras.models.load_model('./full_model/model_project2_10ep.h5')
+model = tf.keras.models.load_model('./full_model/model_project3_inits_rgb_40ep.h5')
 #model = tf.keras.models.load_model('./full_model/model_project3_inits_10ep.h5')
 
 '''

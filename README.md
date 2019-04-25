@@ -1,2 +1,2 @@
 # Main
-main repository
+Building recognition android application
