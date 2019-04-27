@@ -34,7 +34,7 @@ class DataSetGenerator:
         self.data_dir = data_dir
         # масив адрес директорій-класів зображень
         self.data_labels = self.get_data_labels()
-        # вектор масивів із адресам зображень відповідного класу-масиву
+        # вектор масивів із адресами зображень відповідного класу-масиву
         self.data_info = self.get_data_paths()
 
 
