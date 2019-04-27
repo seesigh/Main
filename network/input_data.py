@@ -1,6 +1,7 @@
 import tensorflow as tf
 import numpy as np
 
+
 def load_data():
 	data = tf.keras.datasets.mnist.load_data()
 	train,test = data
